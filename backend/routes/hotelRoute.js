@@ -1,9 +1,9 @@
-import express from "express";
-import {
+const express = require('express');
+const {
   createHotel,updateHotel,deleteHotel,getHotel,getAllHotel,countByCity,countByType,getHotelRooms
-} from "../controller/hotelController.js";
-import Hotel from "../models/Hotel.js";
-import {verifyAdmin,verifyToken} from "../utils/verifyToken.js"
+} = require("../controller/hotelController.js");
+const Hotel = require("../models/Hotel.js");
+const {verifyAdmin,verifyToken} = require("../utils/verifyToken.js");
 const router = express.Router();
 
 //CREATE
@@ -23,4 +23,4 @@ router.get("/hotels/countByCity", countByCity);
 router.get("/hotels/countByType", countByType);
 router.get("/hotels/room/:id", getHotelRooms);
 
-export default router;
+module.exports = router; 

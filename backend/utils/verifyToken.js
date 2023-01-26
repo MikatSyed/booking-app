@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
-import User from "../models/User.js";
-import { createError } from "../utils/errorHandler.js";
+const jwt = require("jsonwebtoken");
+const User = require("../models/User.js");
+const { createError } =  require("../utils/errorHandler.js");
 
 // function verifyToken(req, res, next) {
 //   // Get the token from the headers
@@ -35,7 +35,7 @@ import { createError } from "../utils/errorHandler.js";
 //   next();
 // }
 
-export const verifyToken = async (req, res, next) => {
+exports.verifyToken = async (req, res, next) => {
   const token = req.cookies.access_token;
   // console.log("cookie", token);
   if (!token) {
@@ -57,7 +57,7 @@ export const verifyToken = async (req, res, next) => {
   });
 };
 
-export const verifyUser = (req, res, next) => {
+exports.verifyUser = (req, res, next) => {
   //  console.log(req.user);
     if (req.user.id === req.params.id || req.user.isAdmin) {
       console.log('user verification working');
@@ -67,7 +67,7 @@ export const verifyUser = (req, res, next) => {
     }
 };
 
-export const verifyAdmin = (req, res, next) => {
+exports.verifyAdmin = (req, res, next) => {
   // console.log('aaa',req.user);
     if (req.user.isAdmin) {
       // console.log('admin access');

@@ -1,8 +1,8 @@
-import User from "../models/User.js";
+const User = require("../models/User.js");
 
 
 //UPDATE
-export const updateUser = async (req, res, next) => {
+exports.updateUser = async (req, res, next) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
@@ -19,7 +19,7 @@ export const updateUser = async (req, res, next) => {
   }
 };
 //DELETE
-export const deleteUser = async (req, res, next) => {
+exports.deleteUser = async (req, res, next) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json({
@@ -33,7 +33,7 @@ export const deleteUser = async (req, res, next) => {
 };
 
 //GET SINGLE USER
-export const getUser = async (req, res, next) => {
+exports.getUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     res.status(200).json(user);
@@ -43,7 +43,7 @@ export const getUser = async (req, res, next) => {
 };
 
 //GET ALL USER
-export const getUsers = async (req, res, next) => {
+exports.getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
     res.status(200).json(users);

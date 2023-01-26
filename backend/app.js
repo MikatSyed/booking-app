@@ -1,17 +1,16 @@
-import express from "express";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
-import authRoute from "./routes/authRoute.js";
-import userRoute from "./routes/userRoute.js";
-import hotelsRoute from "./routes/hotelRoute.js";
-import roomRoute from "./routes/roomRoute.js";
-import cookieParser from "cookie-parser";
-import {connect} from './config/database.js'
+const express = require('express');
+const  dotenv = require('dotenv'); 
+const authRoute = require("./routes/authRoute.js");
+const userRoute = require("./routes/userRoute.js");
+const hotelsRoute = require("./routes/hotelRoute.js");
+const roomRoute =  require("./routes/roomRoute.js");
+const cookieParser =  require("cookie-parser");
+const { connect } = require("./config/database.js");
+const path = require("path");
+
 
 const app = express();
 dotenv.config({ path: "backend/config/config.env" });
-
-
 
 //middlewares
 
@@ -33,6 +32,7 @@ app.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
+
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 

@@ -15,10 +15,11 @@
 //       console.log(`Mongodb connected with server : ${data.connection.host}`);
 //     });
 // };
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
 dotenv.config({ path: "backend/config/config.env" });
-export const connect = async () => {
+exports.connect = async () => {
     try {
       mongoose.set("strictQuery", false);
       await mongoose.connect(process.env.DB_URI, {
