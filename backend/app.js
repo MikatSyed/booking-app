@@ -34,6 +34,13 @@ app.use((err, req, res, next) => {
   });
 });
 
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+});
+
+
 app.listen(process.env.PORT, () => {
   connect();
   console.log(`app is listening on port http://localhost:${process.env.PORT}`);
